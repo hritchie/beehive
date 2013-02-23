@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Bees:</b>
+  <%= @box.bees %>
+</p>
+
+<p>
+  <b>Honey:</b>
+  <%= @box.honey %>
+</p>
+
+
+<%= link_to 'Edit', edit_box_path(@box) %> |
+<%= link_to 'Back', boxes_path %>
