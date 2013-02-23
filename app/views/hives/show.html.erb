@@ -1,5 +1,8 @@
 <p id="notice"><%= notice %></p>
+<h1>Hive view:</h1>
+<p>This hive has <%= @hive.boxes.count %> boxes.</p>
 
-
+<p>put a button here to add a hive? or make ppl go to edit view?</p>
+<p>put a button here to "advance time"</p>
 <%= link_to 'Edit', edit_hive_path(@hive) %> |
 <%= link_to 'Back', hives_path %>
