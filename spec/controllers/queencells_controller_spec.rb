@@ -24,7 +24,8 @@ describe QueencellsController do
   # Queencell. As you add validations to Queencell, be sure to
   # update the return value of this method accordingly.
   def valid_attributes
-    { "age" => "1" }
+    { "age" => "1",
+      "box_id" => "1"}
   end
 
   # This should return the minimal set of values that should be in the session
