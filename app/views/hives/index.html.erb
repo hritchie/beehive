@@ -1,0 +1,21 @@
+<h1>Listing hives</h1>
+
+<table>
+  <tr>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @hives.each do |hive| %>
+  <tr>
+    <td><%= link_to 'Show', hive %></td>
+    <td><%= link_to 'Edit', edit_hive_path(hive) %></td>
+    <td><%= link_to 'Destroy', hive, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Hive', new_hive_path %>
