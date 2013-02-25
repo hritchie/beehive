@@ -1,5 +1,6 @@
 Beehive::Application.routes.draw do
   resources :queencells
+  resources :calendars
 
 
   resources :hives
