@@ -1,4 +1,5 @@
 class Calendar < ActiveRecord::Base
   belongs_to :hive
-  attr_accessible :week
+  validates :hive_id, presence: true
+  attr_accessible :week, :hive_id
 end
