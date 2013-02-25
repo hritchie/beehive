@@ -1,0 +1,25 @@
+<%= form_for(@queencell) do |f| %>
+  <% if @queencell.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@queencell.errors.count, "error") %> prohibited this queencell from being saved:</h2>
+
+      <ul>
+      <% @queencell.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :age %><br />
+    <%= f.number_field :age %>
+  </div>
+  <div class="field">
+    <%= f.label :box_id %><br />
+    <%= f.number_field :box_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

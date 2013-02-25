@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130223152658) do
+ActiveRecord::Schema.define(:version => 20130223204730) do
 
   create_table "boxes", :force => true do |t|
     t.integer  "bees"
@@ -22,6 +22,13 @@ ActiveRecord::Schema.define(:version => 20130223152658) do
   end
 
   create_table "hives", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "queencells", :force => true do |t|
+    t.integer  "age"
+    t.integer  "box_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
