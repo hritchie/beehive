@@ -25,7 +25,7 @@ describe BoxesController do
   # update the return value of this method accordingly.
   def valid_attributes
     { "bees" => "1",
-      "hive_id" => FactoryGirl.create(:hive).id}
+      "hive_id" => "1"}
   end
 
   # This should return the minimal set of values that should be in the session
