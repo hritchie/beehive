@@ -11,4 +11,18 @@ describe Hive do
     f.boxes.first.hive_id.should equal(f.id)
   end
 
+  it "can add a box" do
+    f = FactoryGirl.create(:hive)
+    c = f.boxes.count
+    f.add_box
+    f.boxes.count.should equal(c + 1)
+  end
 end
+
+describe "A new Hive" do
+  it "has 2 boxes" do
+    f = FactoryGirl.create(:hive)
+    f.boxes.count.should eq(2)
+  end
+end
+  
