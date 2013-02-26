@@ -16,6 +16,7 @@ class Hive < ActiveRecord::Base
       add_box
     end
     add_calendar
+    allocate_bees(2000)
   end
 
   def honey
@@ -32,5 +33,36 @@ class Hive < ActiveRecord::Base
 
   def advance_time
     self.calendar.advance_time
+    make_honey
+    grow_bees
+#    swarm if self.queencell.swarm?
+#    harvest_honey if self.calendar.summer_over?
   end
+
+  protected
+
+  def allocate_bees(bees)
+    self.boxes.each do |box|
+      box.bees = bees / self.boxes.count
+      box.save
+    end
+  end
+
+  def allocate_honey(honey)
+    self.boxes.each do |box|
+      box.honey = honey / self.boxes.count
+      box.save
+    end
+  end
+  
+  def grow_bees
+    allocate_bees(self.bees * 1.618) # approx. phi
+  end
+
+  def make_honey
+    hon = self.bees * 0.001
+    allocate_honey(self.honey + hon)
+  end
+
+
 end
