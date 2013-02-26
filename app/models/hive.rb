@@ -31,9 +31,19 @@ class Hive < ActiveRecord::Base
     end
   end
 
+  def queencells
+    self.boxes.all.reduce(0) do |hive_total, box|
+      hive_total + box.queencells.count
+    end
+  end
+
   def advance_time
     unless self.calendar.season_over? 
       self.calendar.advance_time
+      @fullness = self.fullness
+      self.boxes.each do |b|
+        b.advance_time(@fullness)
+      end
       make_honey
       grow_bees
     end
@@ -74,5 +84,8 @@ class Hive < ActiveRecord::Base
     allocate_honey(self.honey 2)
   end
 
+  def fullness
+    self.bees / (self.boxes.count * 25000)
+  end
 end
 
