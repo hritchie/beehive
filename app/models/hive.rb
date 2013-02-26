@@ -23,4 +23,7 @@ class Hive < ActiveRecord::Base
       hive_total + box.honey
     end
   end
+
+  def advance_time
+  end
 end

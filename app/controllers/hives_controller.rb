@@ -80,4 +80,10 @@ class HivesController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def advance_time
+    @hive = Hive.find(params[:hive_id])
+    @hive.advance_time
+    redirect_to :root
+  end
 end

@@ -3,7 +3,9 @@ Beehive::Application.routes.draw do
   resources :calendars
 
 
-  resources :hives
+  resources :hives do
+    post 'advance_time' => 'hives#advance_time'
+  end
 
 
   resources :boxes
