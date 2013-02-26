@@ -10,8 +10,10 @@ class Calendar < ActiveRecord::Base
   end
 
   def advance_time
-    self.week += 1
-    self.save
+    unless season_over? 
+      self.week += 1
+      self.save
+    end
   end
 
   def season_over?

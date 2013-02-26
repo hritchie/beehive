@@ -32,10 +32,11 @@ class Hive < ActiveRecord::Base
   end
 
   def advance_time
-    self.calendar.advance_time
-    make_honey
-    grow_bees
-#    swarm if self.queencell.swarm?
+    unless self.calendar.season_over? 
+      self.calendar.advance_time
+      make_honey
+      grow_bees
+    end
   end
 
   protected
@@ -56,6 +57,7 @@ class Hive < ActiveRecord::Base
   
   def grow_bees
     allocate_bees(self.bees * 1.618) # approx. phi
+    swarm if time_to_swarm?
   end
 
   def make_honey
@@ -63,5 +65,14 @@ class Hive < ActiveRecord::Base
     allocate_honey(self.honey + hon)
   end
 
+  def time_to_swarm?
+    false
+  end
+
+  def swarm
+    allocate_bees(self.bees / 2)
+    allocate_honey(self.honey 2)
+  end
 
 end
+
