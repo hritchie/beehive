@@ -14,6 +14,21 @@ class Box < ActiveRecord::Base
     advance_all_queencells
   end
 
+  def clear_queencells
+    self.queencells.each do |q|
+      q.destroy
+    end
+  end
+
+  def time_to_swarm?
+    self.queencells.each do |q|
+      if q.ready?
+        return true
+      end
+    end
+    false
+  end
+
   def add_queencell 
     Queencell.create(box_id: self.id)
   end

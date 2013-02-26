@@ -76,16 +76,29 @@ class Hive < ActiveRecord::Base
   end
 
   def time_to_swarm?
+    self.boxes.each do |box|
+      if box.time_to_swarm?
+        return true
+      end
+    end
     false
   end
 
   def swarm
     allocate_bees(self.bees / 2)
-    allocate_honey(self.honey 2)
+    allocate_honey(self.honey / 2)
+    clear_hive_of_queencells
   end
 
   def fullness
     self.bees / (self.boxes.count * 25000)
   end
+
+  def clear_hive_of_queencells
+    self.boxes.each do |box|
+      box.clear_queencells
+    end
+  end
+
 end
 
