@@ -48,7 +48,7 @@ class Hive < ActiveRecord::Base
       grow_bees
     end
   end
-
+  
   protected
 
   def allocate_bees(bees)
@@ -71,7 +71,7 @@ class Hive < ActiveRecord::Base
   end
 
   def make_honey
-    hon = self.bees * 0.001
+    hon = self.bees * 0.0001 * fullness
     allocate_honey(self.honey + hon)
   end
 
@@ -91,7 +91,8 @@ class Hive < ActiveRecord::Base
   end
 
   def fullness
-    self.bees / (self.boxes.count * 25000)
+    f = self.bees / (self.boxes.count * 25000.0) 
+    (1 - 1 / f).abs
   end
 
   def clear_hive_of_queencells

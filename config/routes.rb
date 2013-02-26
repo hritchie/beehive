@@ -5,6 +5,7 @@ Beehive::Application.routes.draw do
 
   resources :hives do
     post 'advance_time' => 'hives#advance_time'
+    post 'add_box' => 'hives#add_box'
   end
 
 

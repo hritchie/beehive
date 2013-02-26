@@ -86,4 +86,10 @@ class HivesController < ApplicationController
     @hive.advance_time
     redirect_to hive_path(@hive)
   end
+
+  def add_box
+    @hive = Hive.find(params[:hive_id])
+    @hive.add_box
+    redirect_to hive_path(@hive)
+  end
 end

@@ -8,7 +8,7 @@
 <p>there are <%= @hive.queencells %> queencells</p>
 
 
-<p>put a button here to add a box? or make ppl go to edit view?</p>
+<%= button_to 'Add a box to this hive', hive_add_box_path(@hive) %>
 <%= button_to 'Advance by 1 week', hive_advance_time_path(@hive) %>
 <%= link_to 'Edit', edit_hive_path(@hive) %> |
 <%= link_to 'Back', hives_path %>
