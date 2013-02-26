@@ -36,7 +36,6 @@ class Hive < ActiveRecord::Base
     make_honey
     grow_bees
 #    swarm if self.queencell.swarm?
-#    harvest_honey if self.calendar.summer_over?
   end
 
   protected

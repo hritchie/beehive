@@ -4,6 +4,7 @@ class Calendar < ActiveRecord::Base
   validates :hive_id, presence: true
   attr_accessible :week, :hive_id
 
+
   def init
     self.week = 1
   end
@@ -11,5 +12,9 @@ class Calendar < ActiveRecord::Base
   def advance_time
     self.week += 1
     self.save
+  end
+
+  def season_over?
+    self.week >=20
   end
 end
