@@ -1,15 +1,19 @@
-<h1>Listing hives</h1>
+<h1>All hives</h1>
 
 <table>
   <tr>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th>Hive Name</th>
+    <th>Status</th>
+    <th># of Bees</th>
+    <th>Oz. of Honey</th>
   </tr>
 
 <% @hives.each do |hive| %>
   <tr>
-    <td>Hive # <%= hive.id %></td>
+    <td><%= hive.name %></td>
+    <td><%= hive.calendar.season_over? ? 'Season Over' : "Week #{hive.calendar.week}" %></td>
+    <td><%= hive.bees %></td>
+    <td><%= hive.honey %></td>
     <td><%= link_to 'Show', hive %></td>
     <td><%= link_to 'Edit', edit_hive_path(hive) %></td>
     <td><%= link_to 'Destroy', hive, method: :delete, data: { confirm: 'Are you sure?' } %></td>

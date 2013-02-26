@@ -2,6 +2,7 @@ class Hive < ActiveRecord::Base
   has_many :boxes
   after_create :init
   has_one :calendar
+  attr_accessible :name
 
   def add_box
     Box.create(hive_id: self.id)
