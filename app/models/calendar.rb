@@ -7,4 +7,9 @@ class Calendar < ActiveRecord::Base
   def init
     self.week = 1
   end
+
+  def advance_time
+    self.week += 1
+    self.save
+  end
 end

@@ -84,6 +84,6 @@ class HivesController < ApplicationController
   def advance_time
     @hive = Hive.find(params[:hive_id])
     @hive.advance_time
-    redirect_to :root
+    redirect_to hive_path(@hive)
   end
 end

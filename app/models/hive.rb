@@ -25,5 +25,6 @@ class Hive < ActiveRecord::Base
   end
 
   def advance_time
+    self.calendar.advance_time
   end
 end
