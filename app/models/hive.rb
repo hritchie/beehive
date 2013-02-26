@@ -24,6 +24,12 @@ class Hive < ActiveRecord::Base
     end
   end
 
+  def bees
+    self.boxes.all.reduce(0) do |hive_total, box|
+      hive_total + box.bees
+    end
+  end
+
   def advance_time
     self.calendar.advance_time
   end
