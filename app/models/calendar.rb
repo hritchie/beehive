@@ -1,6 +1,6 @@
 class Calendar < ActiveRecord::Base
   belongs_to :hive
-  after_create :init
+  before_create :init
   validates :hive_id, presence: true
   attr_accessible :week, :hive_id
 
