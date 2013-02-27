@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130226225410) do
+ActiveRecord::Schema.define(:version => 20130227030039) do
 
   create_table "boxes", :force => true do |t|
     t.integer  "bees"
@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(:version => 20130226225410) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.string   "name"
+    t.boolean  "swarming"
   end
 
   create_table "queencells", :force => true do |t|

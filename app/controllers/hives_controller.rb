@@ -84,7 +84,12 @@ class HivesController < ApplicationController
   def advance_time
     @hive = Hive.find(params[:hive_id])
     @hive.advance_time
-    redirect_to hive_path(@hive)
+    if @hive.swarming?
+      @hive.end_swarm
+      redirect_to hive_path(@hive), notice: 'Oh no! Your hive swarmed!'
+    else
+      redirect_to hive_path(@hive)
+    end
   end
 
   def add_box

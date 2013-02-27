@@ -2,7 +2,7 @@ class Hive < ActiveRecord::Base
   has_many :boxes
   after_create :init
   has_one :calendar
-  attr_accessible :name
+  attr_accessible :name, :swarming
 
   def add_box
     Box.create(hive_id: self.id)
@@ -18,6 +18,7 @@ class Hive < ActiveRecord::Base
     end
     add_calendar
     allocate_bees(2000)
+    self.swarming = false
   end
 
   def honey
@@ -49,8 +50,13 @@ class Hive < ActiveRecord::Base
       grow_bees
     end
   end
+
+  def end_swarm
+    clear_hive_of_queencells
+    self.swarming = false 
+  end
   
-  protected
+#  protected
 
   def allocate_bees(bees)
     self.boxes.each do |box|
@@ -88,7 +94,7 @@ class Hive < ActiveRecord::Base
   def swarm
     allocate_bees(self.bees / 2)
     allocate_honey(self.honey / 2)
-    clear_hive_of_queencells
+    self.swarming = true
   end
 
   def fullness
