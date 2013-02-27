@@ -10,10 +10,16 @@ describe Box do
   end
 
   it "returns # of bees" do
-    FactoryGirl.create(:box, hive_id: @hive.id).bees.should == 1000
+    @box = FactoryGirl.create(:box, hive_id: @hive.id)
+    @box.bees.should == 0
+    @box.bees = 1000
+    @box.bees.should == 1000
   end
 
   it "returns amount of honey" do
-    FactoryGirl.create(:box, hive_id: @hive.id, honey: 60).honey.should == 60
+    @box = FactoryGirl.create(:box, hive_id: @hive.id)
+    @box.honey.should == 0
+    @box.honey = 60
+    @box.honey.should == 60
   end
 end
