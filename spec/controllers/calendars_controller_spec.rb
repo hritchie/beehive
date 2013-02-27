@@ -24,7 +24,8 @@ describe CalendarsController do
   # Calendar. As you add validations to Calendar, be sure to
   # update the return value of this method accordingly.
   def valid_attributes
-    { "week" => "1" }
+    { "week" => "1",
+      "hive_id" => "1" }
   end
 
   # This should return the minimal set of values that should be in the session
